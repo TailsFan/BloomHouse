@@ -1,0 +1,56 @@
+node_modules
+.env
+.env.local
+.next
+dist
+build
+```
+
+3. Add your files and make initial commit:
+```bash
+git add .
+git commit -m "Initial commit"
+```
+
+4. Set up the remote repository:
+```bash
+git remote add origin https://github.com/ailsan/loomouse.git
+```
+
+5. Push to master branch:
+```bash
+git push -u origin master
+```
+
+If you get any authentication errors, make sure you're logged in to GitHub. You may need to use a personal access token:
+```bash
+git config --global user.name "Your Name"
+git config --global user.email "your.email@example.com"
+```
+
+Create a personal access token on GitHub:
+1. Go to GitHub Settings
+2. Developer Settings
+3. Personal Access Tokens
+4. Generate new token
+
+Then use this token when pushing to GitHub when prompted for password.
+
+Also, create a `vercel.json` file for Vercel deployment:
+````json
+// filepath: vercel.json
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/"
+    }
+  ]
+}
