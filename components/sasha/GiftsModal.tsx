@@ -96,9 +96,9 @@ export function GiftsModal({ isOpen, onClose }: GiftsModalProps) {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
+      <DialogContent className="max-w-4xl">
         <DialogHeader>
-          <DialogTitle className="text-2xl font-semibold text-primary">
+          <DialogTitle className="text-xl sm:text-2xl font-semibold text-primary">
             🧸 Мягкие игрушки в подарок
           </DialogTitle>
         </DialogHeader>
@@ -120,7 +120,7 @@ export function GiftsModal({ isOpen, onClose }: GiftsModalProps) {
               </p>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
               {validGifts.map((gift) => (
                 <div key={gift.id} className="bg-card border border-border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
                   <div className="relative">
@@ -129,25 +129,25 @@ export function GiftsModal({ isOpen, onClose }: GiftsModalProps) {
                       alt={gift.name}
                       width={400}
                       height={300}
-                      className="w-full h-48 object-cover"
+                      className="w-full h-36 sm:h-48 object-cover"
                     />
-                    <button className="absolute top-2 right-2 p-2 bg-white/80 rounded-full hover:bg-white transition-colors">
-                      <Heart className="h-5 w-5 text-rose-accent" />
+                    <button className="absolute top-2 right-2 p-1.5 sm:p-2 bg-white/80 rounded-full hover:bg-white transition-colors">
+                      <Heart className="h-4 w-4 sm:h-5 sm:w-5 text-rose-accent" />
                     </button>
                   </div>
                   
-                  <div className="p-4">
-                    <h3 className="font-medium text-foreground mb-2">{gift.name}</h3>
-                    <p className="text-sm text-muted-foreground mb-3">{gift.description}</p>
+                  <div className="p-3 sm:p-4">
+                    <h3 className="font-medium text-foreground text-sm sm:text-base mb-1 sm:mb-2">{gift.name}</h3>
+                    <p className="text-xs sm:text-sm text-muted-foreground mb-2 sm:mb-3">{gift.description}</p>
                     
                     <div className="flex items-center justify-between">
-                      <span className="text-lg font-semibold text-primary">{gift.price.toLocaleString()} ₽</span>
+                      <span className="text-base sm:text-lg font-semibold text-primary">{gift.price.toLocaleString()} ₽</span>
                       <Button 
                         size="sm"
-                        className="bg-rose-accent hover:bg-rose-dark text-white"
+                        className="bg-rose-accent hover:bg-rose-dark text-white text-xs sm:text-sm"
                         onClick={() => handleAddToCart(gift)}
                       >
-                        <ShoppingCart className="h-4 w-4 mr-2" />
+                        <ShoppingCart className="h-3 w-3 sm:h-4 sm:w-4 mr-1.5 sm:mr-2" />
                         В корзину
                       </Button>
                     </div>

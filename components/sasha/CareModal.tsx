@@ -61,9 +61,9 @@ const flowerTypes = [
 export function CareModal({ isOpen, onClose }: CareModalProps) {
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
+      <DialogContent className="max-w-4xl">
         <DialogHeader>
-          <DialogTitle className="text-2xl font-semibold text-primary flex items-center gap-2">
+          <DialogTitle className="text-xl sm:text-2xl font-semibold text-primary flex items-center gap-2">
             <Heart />
             Как ухаживать за букетами
           </DialogTitle>
@@ -83,14 +83,14 @@ export function CareModal({ isOpen, onClose }: CareModalProps) {
           {/* Общие правила ухода */}
           <div>
             <h3 className="text-xl font-medium text-foreground mb-4">Общие правила ухода</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               {careInstructions.map((instruction, index) => (
-                <div key={index} className="bg-card border border-border rounded-lg p-4">
-                  <div className="flex items-center gap-3 mb-3 text-2xl">
-                    {instruction.icon}
-                    <h4 className="font-medium text-foreground">{instruction.title}</h4>
+                <div key={index} className="bg-card border border-border rounded-lg p-3 sm:p-4">
+                  <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
+                    <div className="text-xl sm:text-2xl">{instruction.icon}</div>
+                    <h4 className="font-medium text-foreground text-sm sm:text-base">{instruction.title}</h4>
                   </div>
-                  <p className="text-sm text-muted-foreground mb-3">{instruction.description}</p>
+                  <p className="text-xs sm:text-sm text-muted-foreground mb-2 sm:mb-3">{instruction.description}</p>
                   <ul className="text-xs text-muted-foreground space-y-1">
                     {instruction.tips.map((tip, tipIndex) => (
                       <li key={tipIndex} className="flex items-start gap-1">
@@ -107,14 +107,14 @@ export function CareModal({ isOpen, onClose }: CareModalProps) {
           {/* Уход по типам цветов */}
           <div>
             <h3 className="text-xl font-medium text-foreground mb-4">Уход по типам цветов</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               {flowerTypes.map((flower, index) => (
-                <div key={index} className="bg-rose/50 border border-rose-accent/20 rounded-lg p-4">
-                  <div className="flex items-center gap-3 mb-2">
-                    <span className="text-2xl">{flower.icon}</span>
-                    <h4 className="font-medium text-foreground">{flower.name}</h4>
+                <div key={index} className="bg-rose/50 border border-rose-accent/20 rounded-lg p-3 sm:p-4">
+                  <div className="flex items-center gap-2 sm:gap-3 mb-2">
+                    <span className="text-xl sm:text-2xl">{flower.icon}</span>
+                    <h4 className="font-medium text-foreground text-sm sm:text-base">{flower.name}</h4>
                   </div>
-                  <p className="text-sm text-muted-foreground">{flower.care}</p>
+                  <p className="text-xs sm:text-sm text-muted-foreground">{flower.care}</p>
                 </div>
               ))}
             </div>
