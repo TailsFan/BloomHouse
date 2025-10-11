@@ -11,7 +11,7 @@ import { db } from "@/lib/firebase";
 import { collection, getDocs, addDoc, query, where, updateDoc, doc } from "firebase/firestore";
 import { useAuth } from "@/context/AuthContext";
 import { useToast } from "@/hooks/use-toast";
-import { useIsMobile } from "@/hooks/use-mobile";
+// import { useIsMobile } from "@/hooks/use-mobile";
 
 interface Bouquet {
   id: string;
@@ -51,7 +51,7 @@ export function CatalogModal({ isOpen, onClose, initialSearchTerm = "" }: Catalo
   const [sortBy, setSortBy] = useState("popular");
   const { user } = useAuth();
   const { toast } = useToast();
-  const isMobile = useIsMobile();
+  // const isMobile = useIsMobile();
 
   useEffect(() => {
     if (isOpen) {
@@ -129,7 +129,7 @@ export function CatalogModal({ isOpen, onClose, initialSearchTerm = "" }: Catalo
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-6xl max-h-[80vh] overflow-y-auto" mobile={isMobile}>
+      <DialogContent className="max-w-6xl max-h-[80vh] overflow-y-auto" /*mobile={isMobile}*/>
         <DialogHeader>
           <DialogTitle className="text-2xl font-semibold text-primary">
             🌺 Каталог букетов
