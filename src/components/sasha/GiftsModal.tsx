@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from 'next/image';
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/smart-dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { ShoppingCart, Heart } from "lucide-react";
 import { db } from "@/lib/firebase";
