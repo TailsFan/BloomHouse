@@ -1,6 +1,6 @@
 "use client";
 
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/smart-dialog";
 import { Droplets, Scissors, Sun, Thermometer, Clock, Heart } from "lucide-react";
 
 interface CareModalProps {
