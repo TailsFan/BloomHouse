@@ -3,7 +3,7 @@
 
 import { useState, useEffect } from "react";
 import Image from 'next/image';
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { MobileDialog, MobileDialogContent, MobileDialogHeader, MobileDialogTitle } from "@/components/ui/mobile-dialog";
 import { Button } from "@/components/ui/button";
 import { ShoppingCart, Heart } from "lucide-react";
 import { db } from "@/lib/firebase";
@@ -95,13 +95,13 @@ export function GiftsModal({ isOpen, onClose }: GiftsModalProps) {
   const validGifts = gifts.filter(gift => isValidUrl(gift.image));
 
   return (
-    <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-4xl">
-        <DialogHeader>
-          <DialogTitle className="text-xl sm:text-2xl font-semibold text-primary">
+    <MobileDialog open={isOpen} onOpenChange={onClose}>
+      <MobileDialogContent className="max-w-4xl">
+        <MobileDialogHeader>
+          <MobileDialogTitle className="text-lg sm:text-xl md:text-2xl font-semibold text-primary">
             🧸 Мягкие игрушки в подарок
-          </DialogTitle>
-        </DialogHeader>
+          </MobileDialogTitle>
+        </MobileDialogHeader>
         
         <div className="mt-6">
           <p className="text-muted-foreground mb-6">
@@ -164,7 +164,7 @@ export function GiftsModal({ isOpen, onClose }: GiftsModalProps) {
             </p>
           </div>
         </div>
-      </DialogContent>
-    </Dialog>
+      </MobileDialogContent>
+    </MobileDialog>
   );
 }

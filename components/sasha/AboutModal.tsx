@@ -1,6 +1,6 @@
 "use client";
 
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { MobileDialog, MobileDialogContent, MobileDialogHeader, MobileDialogTitle } from "@/components/ui/mobile-dialog";
 import { Heart, Award, Users, Truck, Phone, MapPin, Mail } from "lucide-react";
 
 interface AboutModalProps {
@@ -23,13 +23,13 @@ const team = [
 
 export function AboutModal({ isOpen, onClose }: AboutModalProps) {
   return (
-    <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
-        <DialogHeader>
-          <DialogTitle className="text-2xl font-semibold text-primary flex items-center gap-2">
+    <MobileDialog open={isOpen} onOpenChange={onClose}>
+      <MobileDialogContent className="max-w-4xl">
+        <MobileDialogHeader>
+          <MobileDialogTitle className="text-lg sm:text-xl md:text-2xl font-semibold text-primary flex items-center gap-2">
             🌸 О компании BloomHouse
-          </DialogTitle>
-        </DialogHeader>
+          </MobileDialogTitle>
+        </MobileDialogHeader>
         
         <div className="mt-6 space-y-8">
           {/* История компании */}
@@ -152,7 +152,7 @@ export function AboutModal({ isOpen, onClose }: AboutModalProps) {
             </div>
           </div>
         </div>
-      </DialogContent>
-    </Dialog>
+      </MobileDialogContent>
+    </MobileDialog>
   );
 }

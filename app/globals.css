@@ -84,3 +84,77 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer components {
+  /* Mobile-specific modal styles */
+  @media (max-width: 768px) {
+    .mobile-dialog-content {
+      position: fixed !important;
+      top: 2% !important;
+      left: 50% !important;
+      transform: translateX(-50%) !important;
+      width: 96% !important;
+      max-height: 96vh !important;
+      margin: 0 !important;
+      z-index: 9999 !important;
+    }
+    
+    .mobile-dialog-content::-webkit-scrollbar {
+      width: 4px;
+    }
+    
+    .mobile-dialog-content::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    
+    .mobile-dialog-content::-webkit-scrollbar-thumb {
+      background: hsl(var(--muted-foreground));
+      border-radius: 2px;
+    }
+    
+    /* Prevent body scroll when modal is open */
+    body:has(.mobile-dialog-content[data-state="open"]) {
+      overflow: hidden !important;
+      position: fixed !important;
+      width: 100% !important;
+    }
+  }
+  
+  /* Ensure proper viewport handling on mobile */
+  @media (max-width: 640px) {
+    .mobile-dialog-content {
+      top: 1% !important;
+      width: 98% !important;
+      max-height: 98vh !important;
+    }
+  }
+  
+  /* Android WebView specific fixes */
+  @media (max-width: 480px) {
+    .mobile-dialog-content {
+      top: 0.5% !important;
+      width: 99% !important;
+      max-height: 99vh !important;
+      border-radius: 8px !important;
+    }
+    
+    .mobile-dialog-content .mobile-dialog-header {
+      padding-top: 0.5rem !important;
+      padding-bottom: 0.5rem !important;
+    }
+  }
+  
+  /* Ensure modal content is always visible */
+  .mobile-dialog-content {
+    box-sizing: border-box !important;
+    overflow-x: hidden !important;
+  }
+  
+  /* Fix for Android Studio WebView */
+  @supports (-webkit-touch-callout: none) {
+    .mobile-dialog-content {
+      -webkit-overflow-scrolling: touch !important;
+      overscroll-behavior: contain !important;
+    }
+  }
+}

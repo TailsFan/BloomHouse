@@ -3,7 +3,7 @@
 
 import { useState, useEffect } from "react";
 import Image from 'next/image';
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { MobileDialog, MobileDialogContent, MobileDialogHeader, MobileDialogTitle } from "@/components/ui/mobile-dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Search, ShoppingCart, Heart, Star } from "lucide-react";
@@ -127,24 +127,24 @@ export function CatalogModal({ isOpen, onClose, initialSearchTerm = "" }: Catalo
     });
 
   return (
-    <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-6xl max-h-[80vh] overflow-y-auto">
-        <DialogHeader>
-          <DialogTitle className="text-2xl font-semibold text-primary">
+    <MobileDialog open={isOpen} onOpenChange={onClose}>
+      <MobileDialogContent className="max-w-6xl">
+        <MobileDialogHeader>
+          <MobileDialogTitle className="text-lg sm:text-xl md:text-2xl font-semibold text-primary">
             🌺 Каталог букетов
-          </DialogTitle>
-        </DialogHeader>
+          </MobileDialogTitle>
+        </MobileDialogHeader>
         
-        <div className="mt-6 space-y-6">
-          <div className="bg-warm-rose p-4 rounded-lg">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
+        <div className="mt-4 sm:mt-6 space-y-4 sm:space-y-6">
+          <div className="bg-warm-rose p-3 sm:p-4 rounded-lg">
+            <div className="space-y-4">
               <div className="relative">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
                 <Input
                   placeholder="Поиск букетов..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-10"
+                  className="pl-10 text-sm sm:text-base"
                 />
               </div>
               
@@ -155,7 +155,7 @@ export function CatalogModal({ isOpen, onClose, initialSearchTerm = "" }: Catalo
                     size="sm"
                     variant={selectedCategory === category ? "default" : "outline"}
                     onClick={() => setSelectedCategory(category)}
-                    className="whitespace-nowrap"
+                    className="whitespace-nowrap text-xs sm:text-sm"
                   >
                     {category}
                   </Button>
@@ -165,7 +165,7 @@ export function CatalogModal({ isOpen, onClose, initialSearchTerm = "" }: Catalo
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
-                className="px-3 py-2 border border-border rounded-md bg-card w-full"
+                className="px-3 py-2 border border-border rounded-md bg-card w-full text-sm sm:text-base"
               >
                 <option value="popular">По популярности</option>
                 <option value="price-asc">По цене (возр)</option>
@@ -186,7 +186,7 @@ export function CatalogModal({ isOpen, onClose, initialSearchTerm = "" }: Catalo
                   Найдено букетов: {filteredBouquets.length}
                 </p>
                 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                   {filteredBouquets.map((bouquet) => (
                     <div key={bouquet.id} className="bg-card border border-border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
                       <div className="relative">
@@ -195,7 +195,7 @@ export function CatalogModal({ isOpen, onClose, initialSearchTerm = "" }: Catalo
                           alt={bouquet.name}
                           width={400}
                           height={300}
-                          className="w-full h-48 object-cover"
+                          className="w-full h-40 sm:h-48 object-cover"
                         />
                         
                         <div className="absolute top-2 left-2 flex flex-col gap-1">
@@ -212,33 +212,34 @@ export function CatalogModal({ isOpen, onClose, initialSearchTerm = "" }: Catalo
                         </button>
                       </div>
                       
-                      <div className="p-4">
-                        <h3 className="font-medium text-foreground mb-2">{bouquet.name}</h3>
-                        <p className="text-sm text-muted-foreground mb-3 h-10">{bouquet.description}</p>
+                      <div className="p-3 sm:p-4">
+                        <h3 className="font-medium text-foreground mb-2 text-sm sm:text-base">{bouquet.name}</h3>
+                        <p className="text-xs sm:text-sm text-muted-foreground mb-3 h-8 sm:h-10">{bouquet.description}</p>
                         
                         <div className="flex items-center gap-1 mb-3">
                           {Array.from({ length: 5 }).map((_, i) => (
                             <Star
                               key={i}
-                              className={`h-4 w-4 ${
+                              className={`h-3 w-3 sm:h-4 sm:w-4 ${
                                 i < bouquet.rating ? 'text-yellow-400 fill-yellow-400' : 'text-gray-300'
                               }`}
                             />
                           ))}
-                          <span className="text-sm text-muted-foreground ml-1">
+                          <span className="text-xs sm:text-sm text-muted-foreground ml-1">
                             ({bouquet.reviews})
                           </span>
                         </div>
                         
                         <div className="flex items-center justify-between">
-                          <span className="text-lg font-semibold text-primary">{bouquet.price.toLocaleString()} ₽</span>
+                          <span className="text-base sm:text-lg font-semibold text-primary">{bouquet.price.toLocaleString()} ₽</span>
                           <Button 
                             size="sm"
-                            className="bg-rose-accent hover:bg-rose-dark text-white"
+                            className="bg-rose-accent hover:bg-rose-dark text-white text-xs sm:text-sm"
                             onClick={() => handleAddToCart(bouquet)}
                           >
-                            <ShoppingCart className="h-4 w-4 mr-2" />
-                            В корзину
+                            <ShoppingCart className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
+                            <span className="hidden sm:inline">В корзину</span>
+                            <span className="sm:hidden">+</span>
                           </Button>
                         </div>
                       </div>
@@ -258,7 +259,7 @@ export function CatalogModal({ isOpen, onClose, initialSearchTerm = "" }: Catalo
             )}
           </div>
         </div>
-      </DialogContent>
-    </Dialog>
+      </MobileDialogContent>
+    </MobileDialog>
   );
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { MobileDialog, MobileDialogContent, MobileDialogHeader, MobileDialogTitle } from "@/components/ui/mobile-dialog";
 import { Droplets, Scissors, Sun, Thermometer, Clock, Heart } from "lucide-react";
 
 interface CareModalProps {
@@ -60,14 +60,14 @@ const flowerTypes = [
 
 export function CareModal({ isOpen, onClose }: CareModalProps) {
   return (
-    <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-4xl">
-        <DialogHeader>
-          <DialogTitle className="text-xl sm:text-2xl font-semibold text-primary flex items-center gap-2">
-            <Heart />
+    <MobileDialog open={isOpen} onOpenChange={onClose}>
+      <MobileDialogContent className="max-w-4xl">
+        <MobileDialogHeader>
+          <MobileDialogTitle className="text-lg sm:text-xl md:text-2xl font-semibold text-primary flex items-center gap-2">
+            <Heart className="h-5 w-5 sm:h-6 sm:w-6" />
             Как ухаживать за букетами
-          </DialogTitle>
-        </DialogHeader>
+          </MobileDialogTitle>
+        </MobileDialogHeader>
         
         <div className="mt-6 space-y-8">
           <div className="bg-warm-rose p-4 rounded-lg">
@@ -131,7 +131,7 @@ export function CareModal({ isOpen, onClose }: CareModalProps) {
             </ul>
           </div>
         </div>
-      </DialogContent>
-    </Dialog>
+      </MobileDialogContent>
+    </MobileDialog>
   );
 }
