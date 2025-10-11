@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useEffect } from "react";
@@ -67,7 +66,8 @@ export function GiftsModal({ isOpen, onClose }: GiftsModalProps) {
     }
     try {
       const cartCollection = collection(db, "users", user.uid, "cart");
-      const q = query(cartCollection, where("bouquetId", "==", gift.id)); // Using bouquetId for consistency
+      // Using bouquetId as a generic productId for simplicity in cart schema
+      const q = query(cartCollection, where("bouquetId", "==", gift.id));
       const querySnapshot = await getDocs(q);
 
       if (!querySnapshot.empty) {

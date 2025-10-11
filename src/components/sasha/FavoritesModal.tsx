@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useEffect } from "react";
@@ -67,7 +66,7 @@ export function FavoritesModal({ isOpen, onClose }: FavoritesModalProps) {
     alert("Товар добавлен в корзину!");
   };
 
-  if (!user) {
+  if (!user && isOpen) {
      return (
       <Dialog open={isOpen} onOpenChange={onClose}>
         <DialogContent className="max-w-md">
@@ -90,7 +89,7 @@ export function FavoritesModal({ isOpen, onClose }: FavoritesModalProps) {
     );
   }
   
-  if (loading) {
+  if (loading && isOpen) {
     return (
        <Dialog open={isOpen} onOpenChange={onClose}>
         <DialogContent className="max-w-2xl">
@@ -107,7 +106,7 @@ export function FavoritesModal({ isOpen, onClose }: FavoritesModalProps) {
     )
   }
 
-  if (favorites.length === 0) {
+  if (favorites.length === 0 && isOpen) {
     return (
       <Dialog open={isOpen} onOpenChange={onClose}>
         <DialogContent className="max-w-2xl">
